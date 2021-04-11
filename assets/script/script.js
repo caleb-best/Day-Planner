@@ -1,3 +1,4 @@
+//Array of times that will be used
 var timeArray = [
     "9:00AM",
     "10:00AM",
@@ -9,5 +10,16 @@ var timeArray = [
     "4:00PM",
     "5:00PM",
 ]
-
+//inserts the current date to DOM
 document.getElementById('currentDay').textContent = moment().format('dddd, MMMM Do');
+
+
+function timeSection() {
+    var timeBlock = $('<div />');
+    timeBlock.addClass('row time-clock');
+    console.log(timeBlock);
+
+
+
+}
+
