@@ -38,21 +38,31 @@ function timeSection(currentHour, pastHour, thisHour) {
     timeBlock.append(userInput);
 
     //div for the user to save their data
-    var saveData = $('<div />');
-    saveData.addClass('saveBtn col-md-1 col-sm-2 col-2')
-        
-    timeBlock.append(saveData);
+    var saveBtn = $('<div />');
+    saveBtn.addClass('saveBtn col-md-1 col-sm-2 col-2')
+    saveBtn.click(saveData,{
+        hourName: thisHour,
+        content: userInput,
+    });
+    var saveIcon = $('<i />');
+    saveIcon.addClass('far fa-save');
+    saveBtn.append(saveIcon);
+    timeBlock.append(saveBtn);
 
 
 
     var container = $('.container');
     container.append(timeBlock);
 
-    
-    
-
-
 }
+
+//save button connects to local storage
+function saveData(event){
+    console.log("Saved Input");
+    localStorage.setItem(event.data.hourName, event.data.content.val());
+}
+
+
 
 var now = moment().format('H');
 for (i in timeArray) {
