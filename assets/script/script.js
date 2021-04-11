@@ -29,11 +29,11 @@ function timeSection(currentHour, pastHour, thisHour) {
     
     //change colour of div based on corresponding time
     if (pastHour < currentHour) {
-        userInput.addClass('past');
+        userInput.addClass('past col-md-10 col-sm-8 col-6');
     } else if (currentHour === pastHour) {
-        userInput.addClass('present');
+        userInput.addClass('present col-md-10 col-sm-8 col-6');
     } else {
-        userInput.addClass('future');
+        userInput.addClass('future col-md-10 col-sm-8 col-6');
     }
     timeBlock.append(userInput);
 
