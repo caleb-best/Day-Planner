@@ -39,8 +39,8 @@ function timeSection(currentHour, pastHour, thisHour) {
 
     //div for the user to save their data
     var saveData = $('<div />');
-    saveData.addClass('saveBtn')
-    
+    saveData.addClass('saveBtn col-md-1 col-sm-2 col-2')
+        
     timeBlock.append(saveData);
 
 
