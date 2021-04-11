@@ -20,13 +20,21 @@ function timeSection(currentHour, pastHour, thisHour) {
 
     //makes div for the hours
     var hourDiv = $('<div />');
-    hourDiv.addClass('hour');
+    hourDiv.addClass('hour col-md-1 col-sm-2 col-2');
     hourDiv.append(thisHour);
     timeBlock.append(hourDiv);
 
     //div for the user input
     var userInput = $('<textarea />');
     
+    //change colour of div based on corresponding time
+    if (pastHour < currentHour) {
+        userInput.addClass('past');
+    } else if (currentHour === pastHour) {
+        userInput.addClass('present');
+    } else {
+        userInput.addClass('future');
+    }
     timeBlock.append(userInput);
 
     //div for the user to save their data
