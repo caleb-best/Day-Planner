@@ -14,12 +14,27 @@ var timeArray = [
 document.getElementById('currentDay').textContent = moment().format('dddd, MMMM Do');
 
 
-function timeSection() {
+function timeSection(currentHour, pastHour, thisHour) {
     var timeBlock = $('<div />');
     timeBlock.addClass('row time-clock');
-    console.log(timeBlock);
 
+    //makes div for the hours
+    var hourDiv = $('<div />');
+    hourDiv.addClass('hour');
+    hourDiv.append(thisHour);
+    timeBlock.append(hourDiv);
+
+    
+    
 
 
 }
+
+var now = moment().format('H');
+for (i in timeArray) {
+    var showTime = moment(timeArray[i], ['hA']).format('HH');
+    timeSection(now, showTime, timeArray[i]);
+}
+
+console.log(timeArray)
 
