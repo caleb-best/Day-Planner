@@ -18,7 +18,8 @@ function saveData(event) {
     console.log("Saved Input");
     localStorage.setItem(event.data.time, event.data.content.val());
  }
- 
+
+// function to put the divs into the DOM
 function timeSection(currentHour, pastHour, thisHourName) {
     var timeBlock = $('<div />');
     timeBlock.addClass('row time-clock');
@@ -32,10 +33,10 @@ function timeSection(currentHour, pastHour, thisHourName) {
     //div for the user input
     var userInput = $('<textarea />');
     userInput.val(localStorage.getItem(thisHourName));
+    
     //change colour of div based on corresponding time
     if (pastHour < currentHour) {
         userInput.addClass('past col-md-10 col-sm-8 col-6');
-
     }else if (currentHour === pastHour) {
         userInput.addClass('present col-md-10 col-sm-8 col-6');
     } else {
@@ -54,12 +55,13 @@ function timeSection(currentHour, pastHour, thisHourName) {
     saveDiv.append(saveIcon);
     timeBlock.append(saveDiv);
 
-
+    //container for divs    
     var container = $('.container');
     container.append(timeBlock);
 
 }
 
+//loop to go through time array and place in DOM
 var now = moment().format('H');
 for (i in timeArray) {
     var showTime = moment(timeArray[i], ['hA']).format('HH');
