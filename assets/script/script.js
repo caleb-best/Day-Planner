@@ -16,22 +16,22 @@ document.getElementById('currentDay').textContent = moment().format('dddd, MMMM 
 //save button connects to local storage
 function saveData(event) {
     console.log("Saved Input");
-    localStorage.setItem(event.data.hourName, event.data.content.val());
+    localStorage.setItem(event.data.time, event.data.content.val());
  }
  
-function timeSection(currentHour, pastHour, thisHour) {
+function timeSection(currentHour, pastHour, thisHourName) {
     var timeBlock = $('<div />');
     timeBlock.addClass('row time-clock');
 
     //makes div for the hours
     var hourDiv = $('<div />');
     hourDiv.addClass('hour col-md-1 col-sm-2 col-2');
-    hourDiv.append(thisHour);
+    hourDiv.append(thisHourName);
     timeBlock.append(hourDiv);
 
     //div for the user input
     var userInput = $('<textarea />');
-    
+    userInput.val(localStorage.getItem(thisHourName));
     //change colour of div based on corresponding time
     if (pastHour < currentHour) {
         userInput.addClass('past col-md-10 col-sm-8 col-6');
@@ -46,7 +46,7 @@ function timeSection(currentHour, pastHour, thisHour) {
     var saveDiv = $("<div />");
     saveDiv.addClass("saveBtn col-md-1 col-sm-2 col-2");
     saveDiv.click({
-        time: thisHour,
+        time: thisHourName,
         content: userInput}, saveData);
     var saveIcon = $('<i />');
     saveIcon.addClass('far fa-save');
