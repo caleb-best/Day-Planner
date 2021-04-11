@@ -24,6 +24,9 @@ function timeSection(currentHour, pastHour, thisHour) {
     hourDiv.append(thisHour);
     timeBlock.append(hourDiv);
 
+    var container = $('.container');
+    container.append(timeBlock);
+
     
     
 
