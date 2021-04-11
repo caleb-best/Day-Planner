@@ -24,6 +24,19 @@ function timeSection(currentHour, pastHour, thisHour) {
     hourDiv.append(thisHour);
     timeBlock.append(hourDiv);
 
+    //div for the user input
+    var userInput = $('<textarea />');
+    
+    timeBlock.append(userInput);
+
+    //div for the user to save their data
+    var saveData = $('<div />');
+    saveData.addClass('saveBtn')
+    
+    timeBlock.append(saveData);
+
+
+
     var container = $('.container');
     container.append(timeBlock);
 
