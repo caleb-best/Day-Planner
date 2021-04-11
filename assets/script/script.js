@@ -13,7 +13,12 @@ var timeArray = [
 //inserts the current date to DOM
 document.getElementById('currentDay').textContent = moment().format('dddd, MMMM Do');
 
-
+//save button connects to local storage
+function saveData(event) {
+    console.log("Saved Input");
+    localStorage.setItem(event.data.hourName, event.data.content.val());
+ }
+ 
 function timeSection(currentHour, pastHour, thisHour) {
     var timeBlock = $('<div />');
     timeBlock.addClass('row time-clock');
@@ -38,31 +43,21 @@ function timeSection(currentHour, pastHour, thisHour) {
     timeBlock.append(userInput);
 
     //div for the user to save their data
-    var saveBtn = $('<div />');
-    saveBtn.addClass('saveBtn col-md-1 col-sm-2 col-2')
-    saveBtn.click(saveData,{
-        hourName: thisHour,
-        content: userInput,
-    });
+    var saveDiv = $("<div />");
+    saveDiv.addClass("saveBtn col-md-1 col-sm-2 col-2");
+    saveDiv.click({
+        time: thisHour,
+        content: userInput}, saveData);
     var saveIcon = $('<i />');
     saveIcon.addClass('far fa-save');
-    saveBtn.append(saveIcon);
-    timeBlock.append(saveBtn);
-
+    saveDiv.append(saveIcon);
+    timeBlock.append(saveDiv);
 
 
     var container = $('.container');
     container.append(timeBlock);
 
 }
-
-//save button connects to local storage
-function saveData(event){
-    console.log("Saved Input");
-    localStorage.setItem(event.data.hourName, event.data.content.val());
-}
-
-
 
 var now = moment().format('H');
 for (i in timeArray) {
